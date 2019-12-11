@@ -1,0 +1,11 @@
+{
+  "name": "back-app-joga-facil",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/fabionascimento1/back-app-joga-facil.git",
+  "author": "Fabio Nascimento <agsuperpoder@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
+}
