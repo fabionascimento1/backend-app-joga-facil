@@ -17,10 +17,13 @@ exports.create = (req, res) => {
 }
 
 exports.listByUser = (req, res) => {
+  const { offset, limit } = req.query
   Company.find()
     .where({
       user: req.params.userId
     })
+    .limit(parseInt(limit ?? 10))
+    .skip((offset ?? 0 - 1) * limit ?? 2)
     .exec(function (err, Companies) {
       if (err) {
         return res.status(400).json({
