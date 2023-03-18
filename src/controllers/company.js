@@ -36,7 +36,7 @@ exports.listByUser = (req, res) => {
           res.status(200).json({
             content: Companies,
             current: parseInt(page),
-            pages: Math.ceil(parseInt(count / pagination)),
+            pages: Math.ceil(parseInt(count / pagination) + 1),
             total: count,
           });
         }
