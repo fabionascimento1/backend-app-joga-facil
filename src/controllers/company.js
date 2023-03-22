@@ -62,16 +62,16 @@ exports.listActiveByUser = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  Company.findById(req.params.id, function (err, company) {
-    if (err) res.send(err);
-    company.active = req.params.status;
-    company.save((err, data) => {
-      if (err) {
-        return res.status(400).json({
-          error: errorHandler(err),
-        });
-      }
-      res.json(data);
-    });
+  Company.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runVaidator: true,
+  }).exec(function (err, Companies) {
+    if (err) {
+      return res.status(400).json({
+        error: errorHandler(err),
+      });
+    } else {
+      res.status(200).json(Companies);
+    }
   });
 };
