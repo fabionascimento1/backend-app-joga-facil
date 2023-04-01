@@ -2,7 +2,7 @@ const Company = require("../models/company");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
 exports.create = (req, res) => {
-  // console.log("req.body", req.body);
+  /* console.log("req.body", req.body); */
   const company = new Company(req.body);
   company.save((err, company) => {
     if (err) {
@@ -27,20 +27,24 @@ exports.listByUser = (req, res) => {
     .limit(parseInt(pagination))
     .skip(parseInt(page - 1) * pagination ?? 2)
     .exec(function (err, Companies) {
-      Company.count().exec(function (err, count) {
-        if (err) {
-          return res.status(400).json({
-            error: errorHandler(err),
-          });
-        } else {
-          res.status(200).json({
-            content: Companies,
-            current: parseInt(page),
-            pages: Math.ceil(parseInt(count / pagination) + 1),
-            total: count,
-          });
-        }
-      });
+      Company.count()
+        .where({
+          user: req.params.userId,
+        })
+        .exec(function (err, count) {
+          if (err) {
+            return res.status(400).json({
+              error: errorHandler(err),
+            });
+          } else {
+            res.status(200).json({
+              content: Companies,
+              current: parseInt(page),
+              pages: Math.ceil(parseInt(count / pagination) + 1),
+              total: count,
+            });
+          }
+        });
     });
 };
 
