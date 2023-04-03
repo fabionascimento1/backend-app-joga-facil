@@ -24,6 +24,7 @@ exports.listByUser = (req, res) => {
     .where({
       user: req.params.userId,
     })
+    .sort({ _id: -1 })
     .limit(parseInt(pagination))
     .skip(parseInt(page - 1) * pagination ?? 2)
     .exec(function (err, Companies) {
