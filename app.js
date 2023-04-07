@@ -24,6 +24,7 @@ mongoose
 const authRoutes = require('./src/routes/auth')
 const companyRoutes = require('./src/routes/company')
 const sportscenter = require('./src/routes/sportscenter')
+const openingHours = require('./src/routes/openingHours')
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
@@ -33,6 +34,7 @@ app.use(cors())
 app.use('/api', authRoutes)
 app.use('/api', companyRoutes)
 app.use('/api', sportscenter)
+app.use('/api', openingHours)
 
 const port = process.env.PORT
 app.listen(port, () => {
