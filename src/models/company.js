@@ -21,6 +21,14 @@ const companySchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    number: {
+      type: Number,
+      required: true
+    },
+    complement: {
+      type: String,
+      required: false
+    },
     city: {
       type: String,
       required: true
@@ -33,6 +41,10 @@ const companySchema = new mongoose.Schema(
     postalcode: {
       type: Number,
       required: true
+    },
+    floor: {
+      type: Array,
+      required: false
     },
     active: {
       type: Number,
