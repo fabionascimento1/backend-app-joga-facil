@@ -39,7 +39,7 @@ const companySchema = new mongoose.Schema(
       default: 'Brasil'
     },
     postalcode: {
-      type: Number,
+      type: String,
       required: true
     },
     floor: {
