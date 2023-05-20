@@ -48,7 +48,7 @@ const companySchema = new mongoose.Schema(
     },
     active: {
       type: Number,
-      default: 1
+      default: true
     }
   },
   { timestamps: true }
