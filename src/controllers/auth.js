@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken') // to generate signed token
 const expressJwt = require('express-jwt') // for authorization check
 
 exports.signup = (req, res) => {
-  // console.log("req.body", req.body);
   const user = new User(req.body)
   user.save((err, user) => {
     if (err) {
@@ -26,7 +25,7 @@ exports.signin = (req, res) => {
     if (err || !user) {
       return res.status(400).json({
         error:
-          'Não foi possível encontrar usuário com esse Email. Por favor faça o seu Cadastro!'
+          'Não foi possível encontrar usuário com esse Email. Por favor faça o seu cadastro!'
       })
     }
     // if user is found make sure the email and password match
